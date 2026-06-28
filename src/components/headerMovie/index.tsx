@@ -1,9 +1,11 @@
+import Avatar from "@mui/material/Avatar";
 import React from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import HomeIcon from "@mui/icons-material/Home";
 import { MovieDetailsProps } from "../../types/interfaces"; 
 
@@ -15,16 +17,32 @@ const styles = {
     flexWrap: "wrap",
     padding: 1.5,
   },
+  avatar: {
+    backgroundColor: "rgb(255, 0, 0)",
+  },
 };
 
 const MovieHeader: React.FC<MovieDetailsProps> = (movie) => {
-  
+
+  // Get movies from local storage.
+  const movies = JSON.parse(localStorage.getItem("favourites") || '[]');
+
+  // Check if the current movie's id is in the local storage favourites array
+  // Returns the movie object if found or undefined if not found
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const isFavourite = movies.find((favMovie: any) => favMovie.id === movie.id);
+
   return (
     <Paper component="div" sx={styles.root}>
       <IconButton aria-label="go back">
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
-
+      {/* Display avatar if isFavourite (in the local storage favourites array) */}
+      {isFavourite ? (
+        <Avatar sx={styles.avatar}>
+          <FavoriteIcon />
+        </Avatar>
+      ) : null}
       <Typography variant="h4" component="h3">
         {movie.title}{"   "}
         <a href={movie.homepage}>
