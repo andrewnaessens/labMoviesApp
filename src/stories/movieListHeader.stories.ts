@@ -6,9 +6,9 @@ const meta = {
     component: MovieListHeader,
   } satisfies Meta<typeof MovieListHeader>;
   
-  export default meta;
+export default meta;
 
-  type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
   args:{ title:'Discover Movies'}

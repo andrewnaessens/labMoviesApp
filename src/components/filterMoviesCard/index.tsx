@@ -24,56 +24,56 @@ const styles = {
 };
 
 
-  const FilterMoviesCard: React.FC= () => {
+const FilterMoviesCard: React.FC= () => {
 
-  const genres = [
-    {id: 1, name: "Animation"},
-    {id: 2, name: "Comedy"},
-    {id: 3, name: "Thriller"}
-  ]
+const genres = [
+  {id: 1, name: "Animation"},
+  {id: 2, name: "Comedy"},
+  {id: 3, name: "Thriller"}
+]
 
-  return (
-    <>
-    <Card sx={styles.root} variant="outlined">
-      <CardContent>
-        <Typography variant="h5" component="h1">
-          <FilterAltIcon fontSize="large" />
-          Filter the movies.
-        </Typography>
-        <TextField
-          sx={styles.formControl}
-          id="filled-search"
-          label="Search field"
-          type="search"
-          variant="filled"
-        />
-        <FormControl sx={styles.formControl}>
-          <InputLabel id="genre-label">Genre</InputLabel>
-          <Select
-            labelId="genre-label"
-            id="genre-select"
-          >
-            {genres.map((genre) => {
-              return (
-                <MenuItem key={genre.id} value={genre.id}>
-                  {genre.name}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
-      </CardContent>
-    </Card>
-    <Card sx={styles.root} variant="outlined">
-        <CardContent>
-          <Typography variant="h5" component="h1">
-            <SortIcon fontSize="large" />
-            Sort the movies.
-          </Typography>
-        </CardContent>
-      </Card>
-      </>
-  );
+return (
+  <>
+  <Card sx={styles.root} variant="outlined">
+    <CardContent>
+      <Typography variant="h5" component="h1">
+        <FilterAltIcon fontSize="large" />
+        Filter the movies.
+      </Typography>
+      <TextField
+        sx={styles.formControl}
+        id="filled-search"
+        label="Search field"
+        type="search"
+        variant="filled"
+      />
+      <FormControl sx={styles.formControl}>
+        <InputLabel id="genre-label">Genre</InputLabel>
+        <Select
+          labelId="genre-label"
+          id="genre-select"
+        >
+          {genres.map((genre) => {
+            return (
+              <MenuItem key={genre.id} value={genre.id}>
+                {genre.name}
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </FormControl>
+    </CardContent>
+  </Card>
+  <Card sx={styles.root} variant="outlined">
+    <CardContent>
+      <Typography variant="h5" component="h1">
+        <SortIcon fontSize="large" />
+        Sort the movies.
+      </Typography>
+    </CardContent>
+  </Card>
+  </>
+);
 }
 
 export default FilterMoviesCard;
